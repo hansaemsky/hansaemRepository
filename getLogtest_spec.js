@@ -13,3 +13,4 @@ frisby.create('LiveChktest')
       })
       .expectMaxResponseTime(30000)
       .toss();
+// 1. 원격 저장소에 맞춰 갱신하려고 작성한 테스트 로컬에서 이게 보인다면 성공.
