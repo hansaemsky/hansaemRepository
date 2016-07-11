@@ -5,12 +5,14 @@ var frisby = require('frisby');
 //    timeout으로 설정한 내용. 3초
       // timeout:30000
     //  });
-frisby.create('LiveChktest')
+frisby.create('GetLogtest2')
       .get(URL + '/ord/BIX1234567890')
-      .expectJSONTypes('Items.2',{
-		      mediaid:{S:"613755"}
-//			mediaid:{S:String}
+      .afterJSON(function(json){
+//	 console.log({'Items[1]': json});<<
+//   	 1. ' '붙은거와 안붙은것에 대한 차이를 확인한다.
+//   	 2. function(json)이라면, console.log다음에 json이 들어가야한다.?
+      console.log(json.Items[1].payload.S);
+
       })
-      .expectMaxResponseTime(30000)
       .toss();
-// 1. 원격 저장소에 맞춰 갱신하려고 작성한 테스트 로컬에서 이게 보인다면 성공.
+      // .expectMaxResponseTime(30000)
