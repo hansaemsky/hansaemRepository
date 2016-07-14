@@ -8,11 +8,11 @@ var frisby = require('frisby');
 frisby.create('GetLogtest2')
       .get(URL + '/ord/BIX1234567891')
       .afterJSON(function(json){
-//	 console.log({'Items[1]': json});<<
-//   	 1. ' '붙은거와 안붙은것에 대한 차이를 확인한다.
-//   	 2. function(json)이라면, console.log다음에 json이 들어가야한다.?
-      console.log(json.Items[0].payload.S);
-//  인덱스안에 배열을 어떻게?
+
+        for(var i=0; i < json.Items.length; i++){
+          console.log(json.Items[i].payload);
+        }
+ //인덱스는 배열보다 하나 작다.
       })
       .toss();
       // .expectMaxResponseTime(30000)
